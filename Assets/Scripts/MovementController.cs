@@ -37,6 +37,11 @@ public class MovementController : MonoBehaviour
         updatePlayerPosition();
     }
 
+    public void OverrideInputManager()
+    {
+
+    }
+
     private void handleInput()
     {
         movement = inputManager.GetDirection();
