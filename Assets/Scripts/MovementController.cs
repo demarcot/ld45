@@ -13,6 +13,11 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private Animator animator = null;
 
+    [SerializeField]
+    private GameObject target = null;
+    [SerializeField]
+    private float allowedDistance;
+
     private Vector2 movement;
 
     public void Awake()
@@ -37,14 +42,29 @@ public class MovementController : MonoBehaviour
         updatePlayerPosition();
     }
 
-    public void OverrideInputManager()
+    public void OverrideInputManager(IInputManager inputManager)
     {
-
+        this.inputManager = inputManager; 
     }
 
     private void handleInput()
     {
-        movement = inputManager.GetDirection();
+        Vector3 v = inputManager.GetDirection();
+        if(null != target && movementSettings.GetIsAi())
+        {
+            if ((target.transform.position - this.transform.position).magnitude < allowedDistance /*&& Vector3.Dot(target.transform.position - this.transform.position, v) > 0*/)
+            {
+                //Debug.Log("using idle direction");
+                movement = v;
+            } else
+            {
+                movement = (target.transform.position - this.transform.position).normalized;
+            }
+        } else
+        {
+            movement = v;
+        }
+        
         /*
         animator.SetFloat(HORIZONTAL, movement.x);
         animator.SetFloat(VERTICAL, movement.y);
@@ -55,5 +75,10 @@ public class MovementController : MonoBehaviour
     private void updatePlayerPosition()
     {
         rb.MovePosition(rb.position + movement * movementSettings.GetSpeed() * Time.fixedDeltaTime);
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
     }
 }

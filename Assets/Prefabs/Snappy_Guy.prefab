@@ -120,6 +120,8 @@ MonoBehaviour:
   rb: {fileID: 747269368530807244}
   movementSettings: {fileID: 11400000, guid: 6945664b6571c3d4c8b50e7acf8b2910, type: 2}
   animator: {fileID: 0}
+  target: {fileID: 0}
+  allowedDistance: 4
 --- !u!61 &8644739500182854332
 BoxCollider2D:
   m_ObjectHideFlags: 0

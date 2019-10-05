@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7638685551645865408}
   - component: {fileID: 7984532284737380119}
   - component: {fileID: 5163259403976015446}
+  - component: {fileID: 3279969919924616856}
   m_Layer: 0
   m_Name: Snappy_Player
   m_TagString: Untagged
@@ -120,6 +121,8 @@ MonoBehaviour:
   rb: {fileID: 5328935489091600077}
   movementSettings: {fileID: 11400000, guid: f272eb3cb3e75e546a374c26bb9a15cc, type: 2}
   animator: {fileID: 0}
+  target: {fileID: 0}
+  allowedDistance: 10
 --- !u!61 &7638685551645865408
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -250,3 +253,15 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5328935489091600113}
   m_Enabled: 1
+--- !u!114 &3279969919924616856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328935489091600113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67988c87a9159204787a537eaa66cd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
