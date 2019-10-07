@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3279969919924616856}
   m_Layer: 0
   m_Name: Snappy_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 80
   m_Sprite: {fileID: 21300000, guid: 883fed1a0367e274a96a24c8d87bfc89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -265,3 +265,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67988c87a9159204787a537eaa66cd7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followersText: {fileID: 0}

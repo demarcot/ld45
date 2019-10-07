@@ -81,4 +81,17 @@ public class MovementController : MonoBehaviour
     {
         this.target = target;
     }
+
+    public void SetAllowedDistance(float allowedDistance)
+    {
+        this.allowedDistance = allowedDistance;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Follower") || collision.gameObject.CompareTag("Player"))
+        {
+            Physics2D.IgnoreCollision(this.GetComponent<BoxCollider2D>(), collision.collider);
+        }
+    }
 }

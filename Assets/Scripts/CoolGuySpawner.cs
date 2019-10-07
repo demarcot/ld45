@@ -13,6 +13,7 @@ public class CoolGuySpawner : MonoBehaviour
 
     private GameObject player;
     private List<MovementController> controllers = new List<MovementController>();
+    private bool captured = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,9 @@ public class CoolGuySpawner : MonoBehaviour
         for(int i = 0; i < numOfCoolGuys; i++)
         {
             GameObject guy = Instantiate(coolGuyPrefab, this.transform);
-            Vector3 v = guy.transform.position + new Vector3(Random.Range(-spawnRadius, spawnRadius), Random.Range(-spawnRadius, spawnRadius), 0.0f);
-            guy.transform.position = v;
             MovementController controller = guy.GetComponent<MovementController>();
             controller.SetTarget(this.gameObject);
+            controller.SetAllowedDistance(spawnRadius);
             controllers.Add(controller);
         }
     }
@@ -37,11 +37,15 @@ public class CoolGuySpawner : MonoBehaviour
 
     public void OnSpawnerEntered()
     {
-        PlayerState pState = player.gameObject.GetComponent<PlayerState>();
-        pState.AddFollowers(controllers.Count);
-        foreach (MovementController controller in controllers)
+        if(!captured)
         {
-            controller.SetTarget(player);
+            captured = true;
+            PlayerState pState = player.gameObject.GetComponent<PlayerState>();
+            pState.AddFollowers(controllers.Count);
+            foreach (MovementController controller in controllers)
+            {
+                controller.SetTarget(player);
+            }
         }
     }
 }
